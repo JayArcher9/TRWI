@@ -15,9 +15,18 @@ def generate_initial_population(original_biometric_image, num_images, num_rounds
     return initial_population
 
 # Function to optimize GA parameters (crossover and mutation rates)
+def evaluate_accuracy(cancelable_template):
+    # Placeholder function to evaluate the accuracy of a cancelable template
+    # Compare the cancelable template with ground truth or validation data
+    # and return the accuracy
+    return random.uniform(0.6, 1.0)  # Placeholder implementation
+
 def optimize_ga_parameters(initial_population):
     crossover_rates = [0.6, 0.7, 0.8]  # Test different crossover rates
     mutation_rates = [0.03, 0.05, 0.07]  # Test different mutation rates
+
+    # Store accuracy for each combination of mutation and crossover rates
+    accuracy_scores = {}
 
     # Define population size and number of generations
     population_size = 100
@@ -50,8 +59,13 @@ def optimize_ga_parameters(initial_population):
 
             # Evaluate the final population and store the best cancelable template
             best_template, best_fitness = max(zip(population, fitness_scores), key=lambda x: x[1])
-            print(f"Best fitness: {best_fitness}")
-            # Save or process the best cancelable template as needed
+            accuracy = evaluate_accuracy(best_template)
+            accuracy_scores[(crossover_rate, mutation_rate)] = accuracy
+            print(f"Best accuracy: {accuracy}")
+
+    return accuracy_scores
+
+# Main function
 
 # Helper functions for GA operations
 
@@ -121,8 +135,15 @@ def main():
     num_images = 4  # Number of initial population images
     initial_population = generate_initial_population(original_biometric_image, num_images, num_rounds)
 
-    # Optimize GA parameters
-    optimize_ga_parameters(initial_population)
+    # Optimize GA parameters and get accuracy scores
+    accuracy_scores = optimize_ga_parameters(initial_population)
+
+    # Print or use accuracy scores as needed
+    print("Accuracy Scores:")
+    for rates, accuracy in accuracy_scores.items():
+        print(f"Crossover Rate: {rates[0]}, Mutation Rate: {rates[1]} - Accuracy: {accuracy}")
+
+
 
 if __name__ == "__main__":
     main()
