@@ -33,7 +33,7 @@
 cd TRWI</code></pre>
         </li>
         <li>Install the required Python packages:
-            <pre style="background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto;"><code>pip install opencv-python-headless numpy</code></pre>
+            <pre style="background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto;"><code>pip install opencv-python numpy</code></pre>
         </li>
     </ol>
     <h2 id="usage" style="color: #333;">Usage</h2>
