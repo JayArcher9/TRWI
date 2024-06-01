@@ -21,6 +21,12 @@
             padding: 2px 4px;
             border-radius: 4px;
         }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
     </style>
 </head>
 <body>
